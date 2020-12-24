@@ -18,6 +18,7 @@ pub fn main() {
     // Repeat until no empty spots
     // Run A* to find path from start to finish
     // Run flood fill to count how many minutes to fill map
+    // Check if github works
 
     let mut pos = (0, 0);
     let mut map = HashMap::new();
