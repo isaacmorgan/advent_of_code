@@ -94,7 +94,7 @@ pub fn operate(comp: &mut Computer, op: i64, params: &Vec<usize>) -> bool {
         8 => comp.memory[params[2]] = if comp.memory[params[0]] == comp.memory[params[1]] { 1 } else { 0 },
         9 => comp.relative_base = (comp.relative_base as i64 + comp.memory[params[0]]) as usize,
         99 => {
-            println!("done");
+            //println!("done");
             return false;
         },
         _ => (),
