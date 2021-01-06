@@ -128,3 +128,10 @@ pub fn reboot_computer(comp: &mut Computer) {
     comp.pc = 0;
     comp.relative_base = 0;
 }
+
+pub fn setup_new_computer(program_file: &str) -> Computer {
+    let mut comp = new_computer();
+    comp.program = load_program(program_file);
+    reboot_computer(&mut comp);
+    return comp;
+}
