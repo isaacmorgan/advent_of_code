@@ -75,7 +75,7 @@ pub fn operate(comp: &mut Computer, op: i64, params: &Vec<usize>) -> bool {
         2 => comp.memory[params[2]] = comp.memory[params[0]] * comp.memory[params[1]],
         3 => {
             if comp.input.is_empty() {
-                println!("empty");
+                //println!("empty");
                 return false;
             } else {
                 comp.memory[params[0]] = comp.input.remove(0);
