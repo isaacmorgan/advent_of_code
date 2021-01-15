@@ -11,8 +11,12 @@ pub fn main() {
 fn part_2() {
   let (mut map, size) = load(FNAME);
   let dmap = build_dmap(&size);
-  println!("{:?}", dmap);
-  //let mut bio_set = HashSet::new();
+  // print_map(&map, &size);
+  for i in 0..200 {
+    step_layer(&mut map, &size, &dmap);
+    // print_map(&map, &size);
+  }
+  println!("Total bugs: {}", map.len());
 }
 
 fn part_1() {
@@ -31,17 +35,60 @@ fn part_1() {
   println!("Biodiversity Score: {}", bio);
 }
 
-fn build_dmap(size: &(i32, i32)) -> HashMap<(i32, i32), Vec<(i32, i32, i32)>>{
+
+fn step_layer(map: &mut HashSet<(i32, i32, i32)>, size: &(i32, i32), dmap: &HashMap<(i32, i32), Vec<(i32, i32, i32)>>) {
+  let zmax = map.iter().map(|x| x.2).max().unwrap()+1;
+  let zmin = map.iter().map(|x| x.2).min().unwrap()-1;
+
+  let mut rem_list = Vec::new();
+  let mut add_list = Vec::new();
+  // for each in size
+  for z in zmin..=zmax {
+    for x in 0..size.0 {
+      for y in 0..size.1 {
+        if x == &size.0/2 && y == &size.1/2 {
+          continue;
+        }
+        // count neighbors
+        let mut cnt = 0;
+        for d in &*dmap.get(&(x, y)).unwrap() {
+          if map.contains(&(d.0, d.1, z + d.2)) {
+            // println!("({} {} {}) has neighbor ({} {} {})", x, y, z, d.0, d.1, z + d.2);
+            cnt += 1;
+          }
+        }
+        if map.contains(&(x, y, z)) {
+          if cnt != 1 {
+            rem_list.push((x, y, z));
+          }
+        } else {
+          if cnt == 1 || cnt == 2 {
+            add_list.push((x, y, z));
+          }
+        }
+      }
+    }
+  }
+  for m in &rem_list {
+    map.remove(m);
+  }
+  for m in &add_list {
+    map.insert(*m);
+  }
+}
+
+fn build_dmap(size: &(i32, i32)) -> HashMap<(i32, i32), Vec<(i32, i32, i32)>> {
   let mut dmap = HashMap::new();
-  let mx = &size.0/2+1;
-  let my = &size.1/2+1;
+  let mx = &size.0/2;
+  let my = &size.1/2;
+  dbg!(mx, my);
   for x in 0..size.0{
     for y in 0..size.1 {
       let mut n = Vec::new();
-      if x > 0 { n.push((x-1, 0, 0))}
-      if x < &size.0 - 1 { n.push((x+1, 0, 0))}
-      if y > 0 { n.push((0, y-1, 0))}
-      if y < &size.0 - 1 { n.push((0, y+1, 0))}
+      if x > 0 { n.push((x-1, y, 0))}
+      if x < &size.0 - 1 { n.push((x+1, y, 0))}
+      if y > 0 { n.push((x, y-1, 0))}
+      if y < &size.0 - 1 { n.push((x, y+1, 0))}
       if x == 0 { n.push((mx-1, my, 1)); }
       if x == &size.0 - 1 { n.push((mx+1, my, 1)); }
       if y == 0 { n.push((mx, my-1, 1)); }
@@ -106,17 +153,20 @@ fn calc_biodiversity(map: &HashSet<(i32, i32, i32)>, size: &(i32, i32)) -> i32 {
 }
 
 fn print_map(map: &HashSet<(i32, i32, i32)>, size: &(i32, i32)) {
-  let zmax = map.iter().map(|x| x.2).max();
+  let zmax = map.iter().map(|x| x.2).max().unwrap();
   let zmin = map.iter().map(|x| x.2).min().unwrap();
-  for y in 0..size.1 {
-    for x in 0..size.0 {
-      if map.contains(&(x, y, 0)) {
-        print!("#");
-      } else {
-        print!(".");
+  for z in zmin..=zmax {
+    println!("Layer {}", z);
+    for y in 0..size.1 {
+      for x in 0..size.0 {
+        if map.contains(&(x, y, z)) {
+          print!("#");
+        } else {
+          print!(".");
+        }
       }
+      println!();
     }
-    println!();
   }
   println!();
 }
