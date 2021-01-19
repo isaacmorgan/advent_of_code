@@ -40,7 +40,6 @@ fn contiguous_sum(list: &Vec<i64>, n: i64) -> Option<(usize, usize)> {
             return Some((min, max));
         }
     }
-    return None;
 }
 
 fn first_invalid_num(list: &Vec<i64>) -> i64 {
