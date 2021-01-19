@@ -1,6 +1,6 @@
-#[path = "2020/d2020_08.rs"] mod d2020_08;
+#[path = "2020/d2020_09.rs"] mod d2020_09;
 mod tools;
 
 fn main() {
-    d2020_08::main();
+    d2020_09::main();
 }
