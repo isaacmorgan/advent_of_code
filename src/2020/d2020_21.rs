@@ -11,12 +11,12 @@ pub fn main() {
 
 fn part1() {
     let list = load();
-    for l in &list {
-        println!("{:?}", l);
-    }
+    // for l in &list {
+    //     println!("{:?}", l);
+    // }
     let mut map = map_allergens(&list);
-    println!();
-    println!("{:?}", map);
+    // println!();
+    // println!("{:?}", map);
     map_fix_singles(&mut map);
     println!("{:?}", map);
     
@@ -66,7 +66,7 @@ fn map_fix_singles(map: &mut HashMap<String, HashSet<String>>) {
         
         for ing in &single_ing {
             for k in &keys {
-                let mut val = map.get_mut(k).unwrap();
+                let val = map.get_mut(k).unwrap();
                 if val.len() != 1 && val.contains(ing) {
                     val.remove(ing);
                     change = true;
@@ -86,7 +86,7 @@ fn map_allergens(list: &Vec<(Vec<String>, Vec<String>)>) -> HashMap<String, Hash
     for (ingredients, allergens) in list {
         for al in allergens {
             if map.contains_key(al) {
-                let mut almap = map.get_mut(al).unwrap();
+                let almap = map.get_mut(al).unwrap();
                 almap.retain(|ing| {
                     ingredients.contains(ing)
                 });
