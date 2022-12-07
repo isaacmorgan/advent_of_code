@@ -1,6 +1,6 @@
-#[path = "2020/d2020_25.rs"] mod d2020_25;
+#[path = "2022/d2022_06.rs"] mod aoc;
 mod tools;
 
 fn main() {
-    d2020_25::main();
+    aoc::main();
 }
