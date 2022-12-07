@@ -1,4 +1,5 @@
-use crate::d2019_07::intcode::{step, Computer};
+//use crate::d2019_07::intcode::{step, Computer};
+use intcode::{step, Computer};
 use itertools::Itertools;
 mod intcode;
 
@@ -44,7 +45,7 @@ pub fn main() {
     println!("Max thrust {} using {:?}", max_thrust, max_setting);
 }
 
-fn run_amp_chain_loop(amps: &mut Vec<intcode::Computer>) -> i32 {
+fn run_amp_chain_loop(amps: &mut Vec<intcode::Computer>) -> i64 {
     let mut output = 0;
     let mut i = 0;
     'outer: loop {
@@ -72,7 +73,7 @@ fn run_amp_chain(amps: &mut Vec<intcode::Computer>) {
     }
 }
 
-fn init_amp_chain(amps: &mut Vec<intcode::Computer>, inputs: &Vec<&i32>) {
+fn init_amp_chain(amps: &mut Vec<intcode::Computer>, inputs: &Vec<&i64>) {
     for i in 0..N {
         amps[i].memory = amps[i].program.clone();
         amps[i].input.clear();

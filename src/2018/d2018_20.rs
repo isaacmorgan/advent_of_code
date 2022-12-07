@@ -12,7 +12,7 @@ const WALL: i32 = 3;
 
 const OFFSET: i32 = 10;
 
-const FNAME: &str = "./input/2018-20.txt";
+const FNAME: &str = "./input/2018/2018-20.txt";
 
 struct Room {
     x: usize,

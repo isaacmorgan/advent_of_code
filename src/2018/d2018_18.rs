@@ -13,7 +13,7 @@ const LUMBER: i32 = 2;
 const NX: usize = 50;
 const NY: usize = 50;
 
-const FNAME: &str = "./input/2018-18.txt";
+const FNAME: &str = "./input/2018/2018-18.txt";
 
 pub fn main() {
     let mut map = load();

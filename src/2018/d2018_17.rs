@@ -12,9 +12,9 @@ const CLAY: i32 = 1;
 const NX: usize = 2000;
 const NY: usize = 2000;
 
-const FNAME0: &str = "./input/2018-17-0.txt";
-const FNAME: &str = "./input/2018-17.txt";
-const FOUT: &str = "./input/2018-17-out.txt";
+const FNAME0: &str = "./input/2018/2018-17-0.txt";
+const FNAME: &str = "./input/2018/2018-17.txt";
+const FOUT: &str = "./input/2018/2018-17-out.txt";
 
 pub fn main() {
     let mut map = load_input();
