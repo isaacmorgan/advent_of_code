@@ -22,7 +22,7 @@ const EQRI: i64 = 14;
 const EQRR: i64 = 15;
 
 const NR: usize = 6;
-const FNAME: &str = "./input/2018-21.txt";
+const FNAME: &str = "./input/2018/2018-21.txt";
 
 pub fn main() {
     let (mut cpu, program) = load();

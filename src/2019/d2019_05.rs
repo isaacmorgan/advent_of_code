@@ -9,6 +9,7 @@ pub fn main() {
         input: Vec::new(),
         output: Vec::new(),
         pc: 0,
+        relative_base: 0,
     };
     print_mem(&comp.memory);
     comp.memory = intcode::load_program(FNAME);
@@ -22,7 +23,7 @@ pub fn main() {
     println!("Diagnostic code: {:?}", &comp.output);
 }
 
-fn print_mem(mem: &Vec<i32>) {
+fn print_mem(mem: &Vec<i64>) {
     let mut cnt = 0;
     for m in mem {
         if cnt%10 == 0 {

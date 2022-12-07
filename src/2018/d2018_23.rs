@@ -1,7 +1,7 @@
 use std::cmp::{Ordering, max, min};
 use std::collections::{BinaryHeap, HashSet};
 
-const FNAME: &str = "./input/2018-23.txt";
+const FNAME: &str = "./input/2018/2018-23.txt";
 
 pub fn main() {
     let mut bots = load();

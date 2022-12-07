@@ -2,7 +2,7 @@ use regex::Regex;
 use std::collections::{HashMap, HashSet};
 use std::cmp::max;
 
-const FNAME: &str = "./input/2018-24.txt";
+const FNAME: &str = "./input/2018/2018-24.txt";
 
 #[derive(Debug, Clone)]
 struct Group {
@@ -188,7 +188,7 @@ fn load() -> (Vec<Group>, Vec<Group>) {
     let mut immune_system = Vec::new();
     let mut infection = Vec::new();
     let mut cnt = 0;
-    for c in contents.split("\n") {
+    for c in contents.lines() {
         //println!("{:?}", c);
         match c {
             "Immune System:" => team = 0,

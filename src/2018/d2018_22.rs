@@ -14,7 +14,7 @@ const MOD: i32 = 20_183;
 const MX: i32 = 16807;
 const MY: i32 = 48271;
 
-const FNAME: &str = "./input/2018-22.txt";
+const FNAME: &str = "./input/2018/2018-22.txt";
 
 pub fn main() {
     let map = load();

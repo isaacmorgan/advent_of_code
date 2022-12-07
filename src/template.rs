@@ -1,18 +1,14 @@
 use crate::tools;
-static FNAME: &str = "./input/2020/2020-.txt";
+static FNAME: &str = "./input/2022/2022-06-01.txt";
 
 pub fn main() {
-  part1();
-  part2();
-}
-
-fn part1() {
-}
-
-fn part2() {
-
-}
-
-fn load() {
   let input = tools::load(FNAME);
+  part1(&input);
+  part2(&input);
+}
+
+fn part1(lines: &Vec<String>) {
+}
+
+fn part2(lines: &Vec<String>) {
 }

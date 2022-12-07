@@ -13,7 +13,7 @@ pub fn main() {
 fn load() -> Vec<i32> {
     let input = std::fs::read_to_string(FNAME).unwrap();
     let mut data = Vec::new();
-    for x in input.split("\n") {
+    for x in input.lines() {
         if x.is_empty() { continue }
         data.push(x.parse().unwrap());
     }
