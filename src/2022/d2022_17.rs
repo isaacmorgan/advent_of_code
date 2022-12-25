@@ -1,5 +1,5 @@
 use crate::tools;
-static FNAME: &str = "./input/2022/2022-1x-01.txt";
+static FNAME: &str = "./input/2022/2022-17-01.txt";
 
 pub fn main() {
   let input = tools::load(FNAME);
