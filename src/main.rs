@@ -1,6 +1,6 @@
 extern crate core;
 
-#[path = "2022/d2022_17.rs"] mod aoc;
+#[path = "2022/d2022_25.rs"] mod aoc;
 mod tools;
 
 fn main() {

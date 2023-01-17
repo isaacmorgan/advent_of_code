@@ -12,3 +12,7 @@ fn part1(lines: &Vec<String>) {
 
 fn part2(lines: &Vec<String>) {
 }
+
+fn parse(lines: &Vec<String>) {
+
+}
